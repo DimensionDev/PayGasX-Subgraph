@@ -1,20 +1,3 @@
-type EntryPointChanged @entity(immutable: true) {
-  id: Bytes!
-  oldEntryPoint: Bytes! # address
-  newEntryPoint: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type Initialized @entity(immutable: true) {
-  id: Bytes!
-  version: Int! # uint8
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
 type OwnerChanged @entity(immutable: true) {
   id: Bytes!
   oldOwner: Bytes! # address
@@ -22,4 +5,5 @@ type OwnerChanged @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  address: Bytes # address
 }

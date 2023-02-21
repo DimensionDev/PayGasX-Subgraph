@@ -6,7 +6,6 @@ dataSources:
     name: LOGIC_WALLET
     network: matic
     source:
-      address: "0xE74351cA4d11659Be8Fab0054d14f6a417a25703"
       abi: LOGIC_WALLET
       startBlock: 37329319
     mapping:
@@ -14,17 +13,11 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - EntryPointChanged
-        - Initialized
         - OwnerChanged
       abis:
         - name: LOGIC_WALLET
           file: ./abis/LOGIC_WALLET.json
       eventHandlers:
-        - event: EntryPointChanged(indexed address,indexed address)
-          handler: handleEntryPointChanged
-        - event: Initialized(uint8)
-          handler: handleInitialized
         - event: OwnerChanged(indexed address,indexed address)
           handler: handleOwnerChanged
       file: ./src/logic-wallet.ts
