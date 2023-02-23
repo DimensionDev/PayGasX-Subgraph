@@ -7,7 +7,7 @@ dataSources:
     network: matic
     source:
       abi: LOGIC_WALLET
-      startBlock: 37329319
+      startBlock: 39234532
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
