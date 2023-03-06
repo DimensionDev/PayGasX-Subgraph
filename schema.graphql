@@ -8,38 +8,8 @@ type OwnerChanged @entity(immutable: true) {
   address: Bytes # address
 }
 
-type ClaimSuccess @entity(immutable: true) {
-  id: Bytes! # bytes32
-  claimer: Bytes! # address
-  claimed_value: BigInt! # uint256
-  token_address: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type OwnerShip @entity {
+  id: Bytes!
+  address: Bytes! #address
+  owner: Bytes! #address
 }
-
-type CreationSuccess @entity(immutable: true) {
-  total: BigInt! # uint256
-  id: Bytes! # bytes32
-  name: String! # string
-  message: String! # string
-  creator: Bytes! # address
-  creation_time: BigInt! # uint256
-  token_address: Bytes! # address
-  number: BigInt! # uint256
-  ifrandom: Boolean! # bool
-  duration: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type RefundSuccess @entity(immutable: true) {
-  id: Bytes! # bytes32
-  token_address: Bytes! # address
-  remaining_balance: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-

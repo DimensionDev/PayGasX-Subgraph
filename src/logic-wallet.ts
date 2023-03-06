@@ -1,5 +1,5 @@
 import { OwnerChanged as OwnerChangedEvent } from "../generated/LOGIC_WALLET/LOGIC_WALLET";
-import { OwnerChanged } from "../generated/schema";
+import { OwnerChanged, OwnerShip } from "../generated/schema";
 
 export function handleOwnerChanged(event: OwnerChangedEvent): void {
   let entity = new OwnerChanged(
@@ -13,4 +13,11 @@ export function handleOwnerChanged(event: OwnerChangedEvent): void {
   entity.transactionHash = event.transaction.hash;
   entity.address = event.address;
   entity.save();
+
+  // create ownership
+  let address = event.address;
+  let ownerShip = new OwnerShip(address);
+  ownerShip.address = event.address;
+  ownerShip.owner = event.params.newOwner;
+  ownerShip.save();
 }
