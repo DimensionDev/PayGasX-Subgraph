@@ -16,8 +16,16 @@ export function handleOwnerChanged(event: OwnerChangedEvent): void {
 
   // create ownership
   let address = event.address;
-  let ownerShip = new OwnerShip(address);
-  ownerShip.address = event.address;
-  ownerShip.owner = event.params.newOwner;
-  ownerShip.save();
+  // let ownerShip = new OwnerShip(address);
+  let ownerShip = OwnerShip.load(address);
+
+  if (ownerShip !== null) {
+    ownerShip.owner = event.params.newOwner;
+    ownerShip.save();
+  } else {
+    ownerShip = new OwnerShip(address);
+    ownerShip.owner = event.params.newOwner;
+    ownerShip.creator = event.params.oldOwner;
+    ownerShip.save();
+  }
 }

@@ -12,4 +12,5 @@ type OwnerShip @entity {
   id: Bytes!
   address: Bytes! #address
   owner: Bytes! #address
+  creator: Bytes! #address
 }
